@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 2%;
+    --foreground: 210 20% 90%;
+
+    --card: 240 6% 8%;
+    --card-foreground: 210 20% 90%;
+
+    --popover: 240 6% 8%;
+    --popover-foreground: 210 20% 90%;
+
+    --primary: 185 100% 50%;
+    --primary-foreground: 240 10% 2%;
+
+    --secondary: 240 6% 12%;
+    --secondary-foreground: 210 20% 80%;
+
+    --muted: 240 6% 14%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 185 100% 50%;
+    --accent-foreground: 240 10% 2%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 100% / 0.08;
+    --input: 0 0% 100% / 0.08;
+    --ring: 185 100% 50%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 240 8% 5%;
+    --sidebar-foreground: 210 15% 65%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 240 10% 2%;
+    --sidebar-accent: 185 100% 50% / 0.1;
+    --sidebar-accent-foreground: 185 100% 50%;
+    --sidebar-border: 0 0% 100% / 0.05;
+    --sidebar-ring: 185 100% 50%;
+
+    /* Custom tokens */
+    --surface: 240 6% 10%;
+    --surface-alpha: 240 6% 10% / 0.5;
+    --glow: 185 100% 50%;
+    --glow-alpha: 185 100% 50% / 0.15;
+    --glow-strong: 185 100% 50% / 0.3;
+    --success: 142 76% 46%;
+    --warning: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/50 backdrop-blur-xl border border-white/5 shadow-glass;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-white/10 hover:shadow-glass-hover hover:scale-[1.02];
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow) / 0.5);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 12px hsl(var(--glow-strong)), inset 0 0 12px hsl(var(--glow-alpha));
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-300;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+}
