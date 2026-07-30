@@ -29,13 +29,41 @@ export interface SystemStatus {
   latency: number;
 }
 
-/** Combined status for all services (brain, gateway, DBs) for status badges */
+/** Combined status for core services */
 export interface ServicesHealth {
   brain: "online" | "offline";
   gateway: "online" | "offline";
   mongo: "connected" | "disconnected";
-  redis: "connected" | "disconnected";
-  qdrant: "connected" | "disconnected";
+  atlas_vector: "connected" | "disconnected";
+}
+
+export interface OverviewStats {
+  status: "online" | "offline" | "degraded";
+  mode: string;
+  memory_count: number;
+  memories_indexed: number;
+  memory_label: string;
+  active_provider: string;
+  active_model: string;
+  inference_load_percent: number;
+}
+
+export interface OverviewTimeseriesPoint {
+  time: string;
+  tokens: number;
+  requests: number;
+}
+
+export interface OverviewActivity {
+  time: string;
+  event: string;
+  type: string;
+}
+
+export interface OverviewData {
+  stats: OverviewStats;
+  timeseries: OverviewTimeseriesPoint[];
+  activity: OverviewActivity[];
 }
 
 export interface AssistantQueryResponse {
@@ -427,6 +455,9 @@ export const api = {
     fetchApi<SystemStatus>(`/api/system/status${mode ? `?mode=${encodeURIComponent(mode)}` : ""}`),
 
   getServicesHealth: () => fetchApi<ServicesHealth>("/api/system/services"),
+
+  getOverview: (mode?: string) =>
+    fetchApi<OverviewData>(`/api/system/overview${mode ? `?mode=${encodeURIComponent(mode)}` : ""}`),
 
   postAssistantQuery: (text: string, context?: { device?: string; mode?: string }) =>
     fetchApi<AssistantQueryResponse>("/api/assistant/query", {

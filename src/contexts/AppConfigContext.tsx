@@ -13,8 +13,7 @@ const DEFAULT_SERVICES: ServicesHealth = {
   brain: "offline",
   gateway: "offline",
   mongo: "disconnected",
-  redis: "disconnected",
-  qdrant: "disconnected",
+  atlas_vector: "disconnected",
 };
 
 interface AppConfigContextValue {
@@ -22,7 +21,7 @@ interface AppConfigContextValue {
   mode: string;
   latency: number;
   config: AppConfig | undefined;
-  /** Combined health for Brain, Gateway, Mongo, Redis, Qdrant (for status badges) */
+  /** Combined health for Brain, Gateway, Mongo, Atlas Vector Search */
   servicesHealth: ServicesHealth;
   isLoading: boolean;
   error: Error | null;
