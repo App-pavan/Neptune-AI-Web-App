@@ -6,8 +6,7 @@ const SERVICE_BADGES: { key: keyof ReturnType<typeof useAppConfig>["servicesHeal
   { key: "brain", label: "Brain" },
   { key: "gateway", label: "Gateway" },
   { key: "mongo", label: "Mongo" },
-  { key: "redis", label: "Redis" },
-  { key: "qdrant", label: "Qdrant" },
+  { key: "atlas_vector", label: "Atlas" },
 ];
 
 function toBadgeStatus(

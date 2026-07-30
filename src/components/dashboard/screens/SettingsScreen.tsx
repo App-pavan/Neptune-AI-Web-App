@@ -171,7 +171,7 @@ export const SettingsScreen = () => {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm text-foreground">Enable memory retrieval</p>
-                <p className="text-[10px] text-muted-foreground">Inject relevant past facts into chat (Qdrant)</p>
+                <p className="text-[10px] text-muted-foreground">Inject relevant past facts into chat (Atlas Vector Search)</p>
               </div>
               <Switch checked={memoryEnabled} onCheckedChange={setMemoryEnabled} />
             </div>
